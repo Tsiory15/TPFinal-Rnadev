@@ -1,0 +1,28 @@
+.formation_main_container{
+    padding: 1rem;
+    position: relative;
+    height: max-content;
+    width: 100%;
+    background-color: var(--background);
+}
+.formation_card{
+    height: 500px;
+    width: 350px;
+    border: 1px solid var(--foreground);
+    display: grid;
+    grid-template-rows: 2fr 1.5fr;
+}
+.formation_card_container{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.formation_card > div {
+    padding: 1rem;
+    border: 1px solid var(--foreground);   
+}
+.formation_image_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

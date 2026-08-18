@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Section Formation{% endblock %}
+
+{% block body %}
+{% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/formation.css') }}">
+{% endblock %}
+<div class="formation_main_container">
+    <div class="formation_card_container">
+        {% for item in 0..5 %}
+            <div class='formation_card'>
+                <div class='formation_image_container'>
+                    <p>Image Container</p>
+                </div>
+                <div>
+                    <h1>
+                        Titre Formation
+                    </h1>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus ducimus saepe maiores tempore possimus commodi</p>
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}
