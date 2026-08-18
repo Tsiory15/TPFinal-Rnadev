@@ -1,3 +1,7 @@
+p,h1{
+    color: var(--background);
+    text-align: justify;
+}
 .formation_main_container{
     padding: 1rem;
     position: relative;
@@ -7,22 +11,26 @@
 }
 .formation_card{
     height: 500px;
-    width: 350px;
+    width: 400px;
     border: 1px solid var(--foreground);
     display: grid;
     grid-template-rows: 2fr 1.5fr;
 }
 .formation_card_container{
     display: flex;
+    justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
 }
 .formation_card > div {
     padding: 1rem;
-    border: 1px solid var(--foreground);   
+    border: 1px solid var(--background)x;   
 }
 .formation_image_container{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.second_container{
+    background-color: var(--foreground);
 }
