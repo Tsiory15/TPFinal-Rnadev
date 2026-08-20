@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    {% block stylesheets %}
+            <link rel="stylesheet" href={{ asset('css/footer.css') }}>
+    {% endblock %}
+    <div class='footer_main_container'>
+        <div class='footer_first_container'>
+            <h1>A propos</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+        </div>
+        <div class='footer_second_container'>
+            <h1>Contact</h1>
+            <a href={{path('app_acceuil')}}>Acceuil</a>
+            <a href={{path('app_formation')}}>Formation</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+</body>
+</html>
