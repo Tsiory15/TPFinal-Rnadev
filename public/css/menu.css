@@ -1,0 +1,19 @@
+.menu_main_container{
+    z-index: 2;
+    background-color: var(--background);
+    position: sticky;
+    display: flex;
+    top: 0;
+    height: 70px;
+    width: 100%;
+    align-items: center;
+    gap: 2rem;
+    justify-content: center;
+}
+.menu_main_container > a {
+    color: var(--foreground);
+}
+.goToLoginPage{
+    position: absolute;
+    right: 50px;
+}
