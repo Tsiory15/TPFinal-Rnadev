@@ -17,6 +17,8 @@
         {% endif %}
     </head>
     <body>
+        {% include "common/_menu.html.twig" %}
         {% block body %}{% endblock %}
+        {% include "common/_footer.html.twig" %}
     </body>
 </html>

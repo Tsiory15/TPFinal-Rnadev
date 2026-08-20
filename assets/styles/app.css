@@ -1,4 +1,5 @@
 *{
+    text-decoration: none;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -6,6 +7,6 @@
     color: var(--foreground);
 }
 :root {
-  --background: #222222;
+  --background: #181717;
   --foreground: #dfe3e7;
 }

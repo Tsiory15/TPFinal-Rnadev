@@ -6,21 +6,45 @@
 {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/formation.css') }}">
 {% endblock %}
+{% set i = 1 %}
 <div class="formation_main_container">
+    <div class="formation_filter">
+        Catégories
+        <ul class='filter_list'>
+            {% for item in 0..4 %}
+                <li>
+                    <a href="">Categ {{i}}</a>
+                </li>
+                {% set i = i + 1 %}
+            {% endfor %}
+        </ul>
+    </div>
     <div class="formation_card_container">
         {% for item in 0..5 %}
             <div class='formation_card'>
                 <div class='formation_image_container'>
                     <p>Image Container</p>
                 </div>
-                <div>
+                <div class='second_container'>
                     <h1>
-                        Titre Formation
+                        Titre Module
                     </h1>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus ducimus saepe maiores tempore possimus commodi</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur</p>
+                    <a href="#" class='formation_button'>Voir les détails</a>
                 </div>
             </div>
     {% endfor %}
+    </div>
+    <div class="formation_pagination">
+        <a href="">
+            Précedent
+        </a>
+        <p class='nbr_page'>
+            1/1
+        <p/>
+        <a href="">
+            Suivant
+        </a>
     </div>
 </div>
 {% endblock %}

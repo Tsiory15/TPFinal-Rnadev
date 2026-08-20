@@ -1,3 +1,9 @@
+p,h1{
+    color: var(--background);
+}
+a{  
+    text-decoration: none;
+}
 .formation_main_container{
     padding: 1rem;
     position: relative;
@@ -6,23 +12,59 @@
     background-color: var(--background);
 }
 .formation_card{
-    height: 500px;
-    width: 350px;
+    height: 400px;
+    width: 300px;
     border: 1px solid var(--foreground);
     display: grid;
     grid-template-rows: 2fr 1.5fr;
 }
 .formation_card_container{
     display: flex;
+    justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
-}
-.formation_card > div {
-    padding: 1rem;
-    border: 1px solid var(--foreground);   
 }
 .formation_image_container{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.second_container{
+    background-color: var(--foreground);
+    padding: 1rem;
+    display: flex;
+    gap: 1.2rem;
+    flex-direction: column;
+    color: var(--background);
+}
+.formation_button{
+    color: var(--background);
+    text-decoration: none;
+    padding: 1rem;
+    border: 1px solid var(--background);
+}
+.formation_filter{
+    color: var(--foreground);
+    height: 50px;
+    margin: 2rem;
+    margin-bottom: 4rem;
+}
+.filter_list{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 2rem;
+    padding: 2rem;
+}
+.formation_pagination{
+    padding: 2rem;
+    display: flex;
+    gap: 5rem;
+    width: 100%;
+    height: 200px;
+    align-items: center;
+    justify-content: space-between;
+}
+.nbr_page{
+    color: var(--foreground);
 }

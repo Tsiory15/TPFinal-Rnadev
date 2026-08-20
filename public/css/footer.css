@@ -1,0 +1,19 @@
+.footer_main_container *{
+    color: var(--background);
+}
+.footer_main_container{
+    padding: 2rem;
+    display: grid;
+    gap: 1rem;
+    height: max-content;
+    background-color: var(--foreground);
+    grid-template-columns: repeat(2,1fr);
+}
+.footer_second_container,.footer_first_container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.footer_main_container > div{
+    padding: 1rem;
+}
