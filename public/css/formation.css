@@ -12,7 +12,7 @@ a{
     background-color: var(--background);
 }
 .formation_card{
-    height: 400px;
+    height: 500px;
     width: 300px;
     border: 1px solid var(--foreground);
     display: grid;
@@ -35,6 +35,9 @@ a{
     display: flex;
     gap: 1.2rem;
     flex-direction: column;
+    overflow-y: auto;
+}
+.second_container * {
     color: var(--background);
 }
 .formation_button{
@@ -64,6 +67,9 @@ a{
     height: 200px;
     align-items: center;
     justify-content: space-between;
+}
+.formation_pagination * {
+    color: var(--foreground);
 }
 .nbr_page{
     color: var(--foreground);
