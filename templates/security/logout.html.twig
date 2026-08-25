@@ -1,0 +1,136 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Déconnexion{% endblock %}
+
+{% block body %}
+
+<div class="authentification-page">
+
+    <div class="authentification-card">
+
+        {# panneau de présentation #}
+        <div class="authentification-presentation">
+
+            <div class="authentification-badge">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <h2 class="authentification-title">
+                Votre sécurité, <span>notre priorité.</span>
+            </h2>
+
+            <p class="authentification-description">
+                Vous pouvez quitter votre espace en toute sécurité.
+                Votre session sera fermée avant votre prochaine connexion.
+            </p>
+
+            <div class="authentification-feature">
+
+                <div class="authentification-feature-icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <span>
+                    Votre espace reste protégé
+                </span>
+
+            </div>
+
+            <div class="authentification-feature">
+
+                <div class="authentification-feature-icon">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+
+                <span>
+                    Vos informations restent confidentielles
+                </span>
+
+            </div>
+
+            <div class="authentification-feature">
+
+                <div class="authentification-feature-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <span>
+                    Déconnexion simple et rapide
+                </span>
+
+            </div>
+
+        </div>
+
+        {# panneau de déconnexion #}
+        <div class="authentification-form">
+
+            <div class="authentification-form-header">
+
+                <h1>
+                    Déconnexion
+                </h1>
+
+                <p>
+                    Vous êtes actuellement connecté à votre compte.
+                </p>
+
+            </div>
+
+            <div class="text-center py-4">
+
+                <div class="authentification-badge mx-auto mb-4">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </div>
+
+                <h4 class="text-white mb-3">
+                    Voulez-vous vous déconnecter ?
+                </h4>
+
+                <p class="text-white-50 mb-4">
+                    Vous pourrez vous reconnecter à tout moment
+                    avec vos identifiants.
+                </p>
+
+            </div>
+
+            <div class="d-grid gap-3">
+
+                <a
+                    href="{{ path('app_connexion') }}"
+                    class="btn btn-danger authentification-button"
+                >
+                    <i class="fa-solid fa-right-from-bracket me-2"></i>
+                    Se déconnecter
+                </a>
+
+                <a
+                    href="{{ path('app_inscription') }}"
+                    class="btn btn-outline-light"
+                >
+                    <i class="fa-solid fa-user-plus me-2"></i>
+                    Créer un compte
+                </a>
+
+            </div>
+
+            <div class="authentification-footer">
+
+                Vous souhaitez rester connecté ?
+
+                <a
+                    href="{{ path('app_connexion') }}"
+                    class="authentification-link"
+                >
+                    Retour à la connexion
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
