@@ -9,10 +9,13 @@
 </head>
 <body>
     <nav class='menu_main_container'>
-        <a href={{path('app_acceuil')}}>Acceuil</a>
-        <a href={{path('app_formation')}}>Formation</a>
-        <a href="#">Contact</a>
-        <a href="#" class='goToLoginPage'>Se connecter</a>
+        <a href={{path('app_acceuil')}} class='nav-link'>Acceuil</a>
+        <a href={{path('app_formation')}} class='nav-link'>Formation</a>
+        <a href="#" class='nav-link'>Contact</a>
+        {# <a href="#" class='goToLoginPage' class='nav-link'>Se connecter</a> #}
+        <a href="#" class="btn btn-primary goToLoginPage">
+                        Se connecter
+                    </a>
     </nav>
 </body>
 </html>

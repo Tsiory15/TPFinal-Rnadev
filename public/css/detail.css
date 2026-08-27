@@ -1,0 +1,10 @@
+.detail_main_container{
+    height: max-content;
+    width: 100%;
+}
+.detail_main_container * {
+    color: var(--background);
+}
+.detail_second_container{
+    height: 50vh;
+}
