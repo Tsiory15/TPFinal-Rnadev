@@ -9,7 +9,8 @@ a{
     position: relative;
     height: max-content;
     width: 100%;
-    background-color: var(--background);
+    /* background-color: var(--background); */
+    background: linear-gradient(135deg, #181b1d, #3b3f44);
 }
 .formation_card{
     height: 500px;
@@ -68,9 +69,6 @@ a{
     align-items: center;
     justify-content: space-between;
 }
-.formation_pagination * {
-    color: var(--foreground);
-}
-.nbr_page{
+.formation_pagination * ,.nbr_page,.formation_image_container * {
     color: var(--foreground);
 }
