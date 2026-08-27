@@ -7,7 +7,7 @@
     gap: 1rem;
     height: max-content;
     background-color: var(--foreground);
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(3,1fr);
 }
 .footer_second_container,.footer_first_container{
     display: flex;
@@ -15,5 +15,8 @@
     gap: 1rem;
 }
 .footer_main_container > div{
-    padding: 1rem;
+    padding: 1rem 3rem;
+}
+.footer_second_container > a{
+    width: fit-content;
 }
