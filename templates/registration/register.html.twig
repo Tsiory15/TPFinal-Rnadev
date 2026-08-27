@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('styles/authentification.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+<div class="auth-container">
+
+    <div class="card shadow auth-card">
+
+        <div class="card-body p-4 p-md-5">
+
+            <div class="text-center mb-4">
+
+                <div class="mb-3">
+                    <i class="fa-solid fa-user-plus fa-3x"></i>
+                </div>
+
+                <h1 class="auth-title">
+                    Créer un compte
+                </h1>
+
+                <p class="auth-subtitle mb-0">
+                    Inscrivez-vous pour créer votre compte
+                </p>
+
+            </div>
+
+            {{ form_start(registrationForm) }}
+
+                {# username / surnom #}
+                <div class="mb-3">
+
+                    {{ form_label(registrationForm.username) }}
+
+                    {{ form_widget(registrationForm.username, {
+                        'attr': {
+                            'class': 'form-control'
+                        }
+                    }) }}
+
+                    {{ form_errors(registrationForm.username) }}
+
+                </div>
+
+                {# email #}
+                <div class="mb-3">
+
+                    {{ form_label(registrationForm.email) }}
+
+                    {{ form_widget(registrationForm.email, {
+                        'attr': {
+                            'class': 'form-control'
+                        }
+                    }) }}
+
+                    {{ form_errors(registrationForm.email) }}
+
+                </div>
+
+                {# mot de passe #}
+                <div class="mb-3">
+
+                    {{ form_label(registrationForm.password) }}
+
+                    {{ form_widget(registrationForm.password, {
+                        'attr': {
+                            'class': 'form-control'
+                        }
+                    }) }}
+
+                    {{ form_errors(registrationForm.password) }}
+
+                </div>
+
+                {# rôle #}
+                <div class="mb-4">
+
+                    {{ form_label(registrationForm.role) }}
+
+                    {{ form_widget(registrationForm.role, {
+                        'attr': {
+                            'class': 'form-select'
+                        }
+                    }) }}
+
+                    {{ form_errors(registrationForm.role) }}
+
+                </div>
+
+                {# bouton inscription #}
+                <div class="d-grid">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        <i class="fa-solid fa-user-plus me-2"></i>
+                        S'inscrire
+                    </button>
+
+                </div>
+
+            {{ form_end(registrationForm) }}
+
+            <hr class="my-4">
+
+            <p class="text-center mb-0">
+
+                Vous avez déjà un compte ?
+
+                <a
+                    href="{{ path('app_connexion') }}"
+                    class="text-decoration-none fw-semibold"
+                >
+                    <i class="fa-solid fa-right-to-bracket me-1"></i>
+                    Se connecter
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
