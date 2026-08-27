@@ -1,0 +1,190 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+
+<div class="authentification-page">
+
+    <div class="authentification-card">
+
+        {# présentation #}
+        <div class="authentification-presentation">
+
+            <div class="authentification-badge">
+                <i class="fa-solid fa-right-to-bracket"></i>
+            </div>
+
+            <h2 class="authentification-title">
+                Heureux de vous <span>revoir.</span>
+            </h2>
+
+            <p class="authentification-description">
+                Connectez-vous à votre compte pour accéder
+                à votre espace personnel.
+            </p>
+
+            <div class="authentification-feature">
+
+                <div class="authentification-feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <span>
+                    Connexion simple et sécurisée
+                </span>
+
+            </div>
+
+            <div class="authentification-feature">
+
+                <div class="authentification-feature-icon">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+
+                <span>
+                    Accédez rapidement à votre espace
+                </span>
+
+            </div>
+
+            <div class="authentification-feature">
+
+                <div class="authentification-feature-icon">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+
+                <span>
+                    Retrouvez votre compte personnel
+                </span>
+
+            </div>
+
+        </div>
+
+        {# formulaire de connexion #}
+        <div class="authentification-form">
+
+            <div class="authentification-form-header">
+
+                <h1>
+                    Connexion
+                </h1>
+
+                <p>
+                    Entrez vos informations pour continuer.
+                </p>
+
+            </div>
+
+            {# formulaire envoyé à Symfony Security #}
+            <form method="post" action="{{ path('app_connexion') }}">
+
+                {# message d'erreur de connexion #}
+                {% if error is defined and error %}
+                    <div class="alert alert-danger">
+                        <i class="fa-solid fa-circle-exclamation me-2"></i>
+                        Identifiants incorrects.
+                    </div>
+                {% endif %}
+
+                {# email #}
+                <div class="mb-3">
+
+                    <label
+                        for="email"
+                        class="form-label authentification-label"
+                    >
+                        Email
+                    </label>
+
+                    <div class="authentification-input-wrapper">
+
+                        <i
+                            class="fa-regular fa-envelope authentification-input-icon"
+                        ></i>
+
+                        <input
+                            type="email"
+                            class="form-control authentification-input"
+                            id="email"
+                            name="_username"
+                            value="{{ last_username|default('') }}"
+                            placeholder="exemple@email.com"
+                            required
+                            autocomplete="email"
+                        >
+
+                    </div>
+
+                </div>
+
+                {# mot de passe #}
+                <div class="mb-4">
+
+                    <label
+                        for="password"
+                        class="form-label authentification-label"
+                    >
+                        Mot de passe
+                    </label>
+
+                    <div class="authentification-input-wrapper">
+
+                        <i
+                            class="fa-solid fa-lock authentification-input-icon"
+                        ></i>
+
+                        <input
+                            type="password"
+                            class="form-control authentification-input"
+                            id="password"
+                            name="_password"
+                            placeholder="Votre mot de passe"
+                            required
+                            autocomplete="current-password"
+                        >
+
+                    </div>
+
+                </div>
+
+                {# bouton #}
+                <div class="d-grid">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary authentification-button"
+                    >
+
+                        <i class="fa-solid fa-right-to-bracket me-2"></i>
+
+                        Se connecter
+
+                    </button>
+
+                </div>
+
+            </form>
+
+            <div class="authentification-footer">
+
+                Vous n'avez pas encore de compte ?
+
+                <a
+                    href="{{ path('app_inscription') }}"
+                    class="authentification-link"
+                >
+                    <i class="fa-solid fa-user-plus me-1"></i>
+                    Créer un compte
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
