@@ -1,0 +1,474 @@
+/* =========================
+ADMIN DASHBOARD
+========================= */
+
+.admin-dashboard {
+min-height: 100vh;
+display: flex;
+background-color: var(--background);
+}
+
+/* =========================
+CONTENU PRINCIPAL
+========================= */
+
+.admin-main {
+flex: 1;
+min-width: 0;
+padding: 2rem;
+}
+
+/* =========================
+HEADER
+========================= */
+
+.admin-topbar {
+display: flex;
+align-items: center;
+padding-bottom: 1.5rem;
+margin-bottom: 2rem;
+border-bottom: 1px solid var(--foreground);
+}
+
+.admin-topbar h1 {
+margin: 0;
+color: var(--foreground);
+}
+
+/* =========================
+CONTENU
+========================= */
+
+.admin-content {
+width: 100%;
+}
+
+/* =========================
+TITRE FORMULAIRE
+========================= */
+
+.formation-header {
+width: 100%;
+}
+
+.formation-title {
+margin-bottom: 1.5rem;
+}
+
+.formation-title h2 {
+margin: 0;
+color: var(--foreground);
+}
+
+/* =========================
+FORMULAIRE
+========================= */
+
+.formation-form {
+width: 100%;
+max-width: 800px;
+padding: 2rem;
+box-sizing: border-box;
+
+
+background-color: var(--foreground);
+
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+
+
+}
+
+/* =========================
+CHAMPS
+========================= */
+
+.form-group {
+display: flex;
+flex-direction: column;
+gap: 0.6rem;
+}
+
+.form-group label {
+color: var(--background);
+font-weight: bold;
+}
+
+/* =========================
+INPUT
+========================= */
+
+.form-group input,
+.form-group textarea {
+width: 100%;
+padding: 0.8rem;
+box-sizing: border-box;
+
+
+border: 1px solid var(--background);
+
+background-color: var(--foreground);
+color: var(--background);
+
+font-family: Arial, Helvetica, sans-serif;
+outline: none;
+
+
+}
+
+.form-group input {
+height: 45px;
+}
+
+.form-group textarea {
+min-height: 120px;
+resize: vertical;
+}
+
+/* =========================
+FOCUS
+========================= */
+
+.form-group input:focus,
+.form-group textarea:focus {
+border: 2px solid var(--background);
+}
+
+/* =========================
+ACTION FORMULAIRE
+========================= */
+
+.form-actions {
+display: flex;
+justify-content: flex-start;
+}
+
+/* =========================
+BOUTON AJOUTER
+========================= */
+
+.admin-btn {
+display: flex;
+align-items: center;
+gap: 0.6rem;
+
+padding: 0.8rem 1.2rem;
+
+color: var(--background);
+background-color: var(--foreground);
+
+border: 1px solid var(--background);
+
+cursor: pointer;
+
+font-size: 1rem;
+white-space: nowrap;
+
+
+}
+
+.admin-btn:hover {
+color: var(--foreground);
+background-color: var(--background);
+}
+
+/* =========================
+LISTE DES FORMATIONS
+========================= */
+
+.formation-list {
+width: 100%;
+margin-top: 4rem;
+}
+
+.formation-list h2 {
+margin: 0 0 1.5rem 0;
+color: var(--foreground);
+}
+
+/* =========================
+CONTENEUR DU TABLEAU
+========================= */
+
+.formations-table-container {
+width: 100%;
+overflow-x: auto;
+background-color: var(--foreground);
+box-sizing: border-box;
+}
+
+/* =========================
+TABLEAU
+========================= */
+
+.formations-table {
+width: 100%;
+border-collapse: collapse;
+table-layout: fixed;
+background-color: var(--foreground);
+}
+
+/* =========================
+LARGEUR DES COLONNES
+========================= */
+
+.formations-table .id-column {
+width: 8%;
+}
+
+.formations-table .titre-column {
+width: 22%;
+}
+
+.formations-table .description-column {
+width: 45%;
+}
+
+.formations-table .actions-column {
+width: 25%;
+}
+
+/* =========================
+EN-TÊTES
+========================= */
+
+.formations-table th {
+padding: 1.2rem;
+
+
+text-align: left;
+
+color: var(--background);
+background-color: var(--foreground);
+
+border-bottom: 2px solid var(--background);
+
+font-weight: bold;
+
+}
+
+/* =========================
+CELLULES
+========================= */
+
+.formations-table td {
+padding: 1.2rem;
+
+
+color: var(--background);
+
+border-bottom: 1px solid var(--background);
+
+vertical-align: middle;
+
+line-height: 1.5;
+
+word-wrap: break-word;
+
+
+}
+
+/* =========================
+COLONNE ID
+========================= */
+
+.formations-table .id-column {
+text-align: center;
+}
+
+/* =========================
+COLONNE TITRE
+========================= */
+
+.formations-table .titre-column {
+font-weight: bold;
+}
+
+/* =========================
+DESCRIPTION
+========================= */
+
+.formations-table .description-column {
+line-height: 1.6;
+}
+
+/* =========================
+HOVER LIGNE
+========================= */
+
+.formations-table tbody tr:hover {
+background-color: var(--background);
+}
+
+.formations-table tbody tr:hover td {
+color: var(--foreground);
+}
+
+/* =========================
+ACTIONS
+========================= */
+
+.formations-actions {
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+gap: 0.8rem;
+
+white-space: nowrap;
+
+
+}
+
+/* =========================
+BOUTONS ACTIONS
+========================= */
+
+.btn-modifier,
+.btn-supprimer {
+padding: 0.7rem 1rem;
+
+
+border: 1px solid var(--background);
+
+cursor: pointer;
+
+font-size: 0.9rem;
+
+font-weight: bold;
+
+white-space: nowrap;
+
+
+}
+
+/* =========================
+MODIFIER
+========================= */
+
+.btn-modifier {
+color: var(--background);
+background-color: var(--foreground);
+}
+
+.btn-modifier:hover {
+color: var(--foreground);
+background-color: var(--background);
+}
+
+/* =========================
+SUPPRIMER
+========================= */
+
+.btn-supprimer {
+color: var(--background);
+background-color: var(--foreground);
+}
+
+.btn-supprimer:hover {
+color: var(--foreground);
+background-color: var(--background);
+}
+
+/* =========================
+TABLEAU VIDE
+========================= */
+
+.empty-table {
+text-align: center;
+padding: 2rem !important;
+color: var(--background);
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+
+.admin-main {
+    padding: 1.5rem;
+}
+
+.formation-form {
+    max-width: 100%;
+}
+
+.formations-table {
+    min-width: 750px;
+}
+
+
+}
+
+@media (max-width: 650px) {
+
+
+.admin-main {
+    padding: 1rem;
+}
+
+.formation-form {
+    padding: 1.2rem;
+}
+
+.formation-list {
+    margin-top: 3rem;
+}
+
+.formations-table {
+    min-width: 750px;
+}
+
+
+}
+
+.btn-retour {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.8rem 1.2rem;
+
+    color: var(--background);
+    background-color: var(--foreground);
+
+    border: 1px solid var(--background);
+
+    text-decoration: none;
+
+    font-size: 1rem;
+}
+
+.btn-retour:hover {
+    color: var(--foreground);
+    background-color: var(--background);
+}
+
+.formations-actions .btn-modifier {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.7rem 1rem;
+
+    color: var(--background);
+    background-color: var(--foreground);
+
+    border: 1px solid var(--background);
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.formations-actions .btn-modifier:hover {
+    color: var(--foreground);
+    background-color: var(--background);
+}

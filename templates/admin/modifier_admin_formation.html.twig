@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une formation{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/crud_formations.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="admin-dashboard">
+
+    <main class="admin-main">
+
+        <header class="admin-topbar">
+            <h1>Modifier une formation</h1>
+        </header>
+
+        <section class="admin-content">
+
+            <div class="formation-header">
+
+                <div class="formation-title">
+                    <h2>Modifier : {{ formation.titre }}</h2>
+                </div>
+
+                {{ form_start(form, {
+                    'attr': {
+                        'class': 'formation-form'
+                    }
+                }) }}
+
+                    <div class="form-group">
+                        {{ form_label(form.titre) }}
+
+                        {{ form_widget(form.titre, {
+                            'attr': {
+                                'placeholder': 'Ex : Développement Web'
+                            }
+                        }) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.description) }}
+
+                        {{ form_widget(form.description, {
+                            'attr': {
+                                'placeholder': 'Description de la formation'
+                            }
+                        }) }}
+                    </div>
+
+                    <div class="form-actions">
+
+                        <button type="submit" class="admin-btn">
+                            Enregistrer les modifications
+                        </button>
+
+                        <a href="{{ path('admin_formations') }}" class="btn-retour">
+                            Annuler
+                        </a>
+
+                    </div>
+
+                {{ form_end(form) }}
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+{% endblock %}
