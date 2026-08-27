@@ -9,10 +9,11 @@ a{
     position: relative;
     height: max-content;
     width: 100%;
-    background-color: var(--background);
+    /* background-color: var(--background); */
+    background: linear-gradient(135deg, #181b1d, #3b3f44);
 }
 .formation_card{
-    height: 400px;
+    height: 500px;
     width: 300px;
     border: 1px solid var(--foreground);
     display: grid;
@@ -35,6 +36,9 @@ a{
     display: flex;
     gap: 1.2rem;
     flex-direction: column;
+    overflow-y: auto;
+}
+.second_container * {
     color: var(--background);
 }
 .formation_button{
@@ -65,6 +69,6 @@ a{
     align-items: center;
     justify-content: space-between;
 }
-.nbr_page{
+.formation_pagination * ,.nbr_page,.formation_image_container * {
     color: var(--foreground);
 }

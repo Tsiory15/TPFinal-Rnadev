@@ -1,0 +1,13 @@
+.detail_main_container{
+    padding: 3rem 2rem;
+    display: flex;
+    height: max-content;
+    gap: 1rem;
+    width: 100%;
+}
+.detail_main_container * {
+    color: var(--background);
+}
+.detail_second_container{
+    height: 50vh;
+}

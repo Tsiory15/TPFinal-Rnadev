@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DetailController!{% endblock %}
+
+{% block body %}
+{% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+{% endblock %}
+<div class="detail_main_container">
+    {% for item in formation %}
+<div class="card shadow-sm" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Développement Web</h5>
+
+        <p class="card-text">
+            Apprenez à créer des applications web modernes
+            avec PHP, Symfony et Bootstrap.
+        </p>
+    </div>
+</div>
+    {% endfor %}
+</div>
+{% endblock %}
