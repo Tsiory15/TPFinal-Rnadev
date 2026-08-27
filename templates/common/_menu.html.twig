@@ -1,18 +1,35 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     {% block stylesheets %}
-            <link rel="stylesheet" href={{ asset('css/menu.css') }}>
+        <link rel="stylesheet" href="{{ asset('css/menu.css') }}">
     {% endblock %}
+
 </head>
+
 <body>
-    <nav class='menu_main_container'>
-        <a href={{path('app_acceuil')}}>Acceuil</a>
-        <a href={{path('app_formation')}}>Formation</a>
+
+    <nav class="menu_main_container">
+
+        <a href="{{ path('app_acceuil') }}">Acceuil</a>
+
+        <a href="{{ path('app_formation') }}">Formation</a>
+
         <a href="#">Contact</a>
-        <a href="#" class='goToLoginPage'>Se connecter</a>
+
+        <a href="{{ path('app_connexion') }}" class="goToLoginPage">
+            Se connecter
+        </a>
+
     </nav>
+
 </body>
+
 </html>
