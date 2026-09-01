@@ -1,34 +1,37 @@
-p,h1{
+p{
     color: var(--background);
 }
 a{  
-    text-decoration: none;
+    color: var(--background);
 }
 .formation_main_container{
     padding: 1rem;
     position: relative;
     height: max-content;
     width: 100%;
-    /* background-color: var(--background); */
-    background: linear-gradient(135deg, #181b1d, #3b3f44);
+    background-color: var(--secondary);
 }
 .formation_card{
     height: 500px;
     width: 300px;
-    border: 1px solid var(--foreground);
     display: grid;
-    grid-template-rows: 2fr 1.5fr;
+    grid-template-rows: 3fr 1fr;
+    padding: 0.5rem;
+    background-color: var(--foreground);
 }
 .formation_card_container{
     display: flex;
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
+    margin-top: 100px;
 }
 .formation_image_container{
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    width: 100%;
 }
 .second_container{
     background-color: var(--foreground);
@@ -36,29 +39,23 @@ a{
     display: flex;
     gap: 1.2rem;
     flex-direction: column;
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    position: relative;
 }
 .second_container * {
     color: var(--background);
 }
 .formation_button{
-    color: var(--background);
-    text-decoration: none;
-    padding: 1rem;
-    border: 1px solid var(--background);
-}
-.formation_filter{
     color: var(--foreground);
-    height: 50px;
-    margin: 2rem;
-    margin-bottom: 4rem;
-}
-.filter_list{
+    text-decoration: none;
+    background-color: rgb(14, 14, 24);
     display: flex;
     align-items: center;
-    list-style: none;
-    gap: 2rem;
-    padding: 2rem;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 17px;
+    width: 250px;
 }
 .formation_pagination{
     padding: 2rem;
@@ -69,6 +66,45 @@ a{
     align-items: center;
     justify-content: space-between;
 }
+select *,select{
+    color: var(--background);
+    border-radius: 5px;
+}
 .formation_pagination * ,.nbr_page,.formation_image_container * {
-    color: var(--foreground);
+    color: var(--background);
+    font-size: 20px;
+}
+.formation_filter{
+    display: flex;
+    position: fixed;
+    z-index: 10;
+    left: 50px;
+    align-items: center;
+    justify-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+}
+.simple_container{
+    position: relative;
+    background-color: var(--foreground);
+    padding: 1rem;
+}
+.search{
+    border: none;
+    border-bottom: 1px solid var(--background);
+    width: 500px;
+    outline: none;
+    color: var(--background);
+    padding: 0.5rem;
+}
+.filter_list_container{
+    position: absolute;
+    left: 0;
+    width: fit-content;
+}
+.filter_list{
+    width: 200px;
+    padding: 0.5rem;
+    outline: none;
 }

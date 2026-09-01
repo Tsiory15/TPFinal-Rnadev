@@ -8,39 +8,45 @@
 {% endblock %}
 <div class="formation_main_container">
     <div class="formation_filter">
-        Catégories
-        <ul class='filter_list'>
+        <div class='simple_container filter_list_container'>
+        <select class='filter_list'>
             {% for item in listCateg %}
-                <li>
-                    <a href="" class='nav-link'>{{item.nom}}</a>
-                </li>
+                    <option value="">
+                        <a href="" class='nav-link'>{{item.nom}}</a>
+                    </option>
             {% endfor %}
-        </ul>
+        </select>
+        </div>
+        <div class='simple_container'>
+        <form action={{path('app_formation')}} method="post">
+            <input type="search" name="search" id="" class="search" placeholder='Rechercher'>
+            <input type="submit" value="Search" class='btn btn-primary'>
+        </form>
+        </div>
     </div>
     <div class="formation_card_container">
         {% for item in listModule %}
             <div class='formation_card'>
                 <div class='formation_image_container'>
-                    <p>Image Container</p>
+                    <img src={{asset('images/mob.jpeg')}} alt="" height='100%' width:'100%'>
                 </div>
                 <div class='second_container'>
-                    <h3>
+                    <h5>
                         {{item.titre}}
-                    </h3>
-                    <p>{{item.description}}</p>
+                    </h5>
                     <a href={{path('app_detail',{id:item.id})}} class='formation_button'>Voir les détails</a>
                 </div>
             </div>
     {% endfor %}
     </div>
     <div class="formation_pagination">
-        <a href="" class='nav-link'>
+        <a href={{path('app_formation',{page:CurrentPage - 1})}} class='nav-link'>
             Précedent
         </a>
         <p class='nbr_page'>
-            1/1
+            {{CurrentPage}}/{{totalItem}}
         <p/>
-        <a href="" class='nav-link'>
+        <a href={{path('app_formation',{page:CurrentPage + 1})}} class='nav-link'>
             Suivant
         </a>
     </div>

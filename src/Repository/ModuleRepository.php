@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Module;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -40,12 +41,15 @@ class ModuleRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
-        public function getModule():array
+        public function getModule (?string $mot,int $page,int $limit):Paginator
         {
-            return $this->createQueryBuilder('m')
-            ->select('m')
+            return new Paginator(
+            $this->createQueryBuilder('m')
+            ->andWhere('m.titre LIKE :search')
+            ->setParameter('search','%'.$mot.'%')
+            ->setFirstResult(($page - 1)*$limit)
+            ->setMaxResults($limit)
             ->getQuery()
-            ->getResult()
-            ;
+            );
         }
 }
