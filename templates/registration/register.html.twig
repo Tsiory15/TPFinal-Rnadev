@@ -1,133 +1,256 @@
-{% extends 'base.html copy.twig' %}
+﻿{% extends 'base.html copy.twig' %}
 
 {% block title %}Inscription{% endblock %}
 
-{% block stylesheets %}
-
-    <link rel="stylesheet" href="{{ asset('styles/authentification.css') }}">
-
-{% endblock %}
-
 {% block body %}
 
-<div class="auth-container">
+<div class="authentification-page">
 
-    <div class="card shadow auth-card">
+<div class="authentification-card">
 
-        <div class="card-body p-4 p-md-5">
+    {# présentation #}
+    <div class="authentification-presentation">
 
-            <div class="text-center mb-4">
+        <div class="authentification-badge">
+            <i class="fa-solid fa-user-plus"></i>
+        </div>
 
-                <div class="mb-3">
-                    <i class="fa-solid fa-user-plus fa-3x"></i>
-                </div>
+        <h2 class="authentification-title">
+            Bienvenue sur <span>notre plateforme.</span>
+        </h2>
 
-                <h1 class="auth-title">
-                    Créer un compte
-                </h1>
+        <p class="authentification-description">
+            Créez votre compte et commencez dès maintenant
+            votre parcours d'apprentissage.
+        </p>
 
-                <p class="auth-subtitle mb-0">
-                    Inscrivez-vous pour créer votre compte
-                </p>
+        <div class="authentification-feature">
 
+            <div class="authentification-feature-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
             </div>
 
-            {{ form_start(registrationForm) }}
+            <span>
+                Accédez à nos formations
+            </span>
 
-                {# username / surnom #}
-                <div class="mb-3">
+        </div>
 
-                    {{ form_label(registrationForm.username) }}
+        <div class="authentification-feature">
 
-                    {{ form_widget(registrationForm.username, {
-                        'attr': {
-                            'class': 'form-control'
-                        }
-                    }) }}
+            <div class="authentification-feature-icon">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
 
-                    {{ form_errors(registrationForm.username) }}
+            <span>
+                Apprenez à votre rythme
+            </span>
 
-                </div>
+        </div>
 
-                {# email #}
-                <div class="mb-3">
+        <div class="authentification-feature">
 
-                    {{ form_label(registrationForm.email) }}
+            <div class="authentification-feature-icon">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
 
-                    {{ form_widget(registrationForm.email, {
-                        'attr': {
-                            'class': 'form-control'
-                        }
-                    }) }}
-
-                    {{ form_errors(registrationForm.email) }}
-
-                </div>
-
-                {# mot de passe #}
-                <div class="mb-3">
-
-                    {{ form_label(registrationForm.password) }}
-
-                    {{ form_widget(registrationForm.password, {
-                        'attr': {
-                            'class': 'form-control'
-                        }
-                    }) }}
-
-                    {{ form_errors(registrationForm.password) }}
-
-                </div>
-
-                {# rôle #}
-                <div class="mb-4">
-
-                    {{ form_label(registrationForm.role) }}
-
-                    {{ form_widget(registrationForm.role, {
-                        'attr': {
-                            'class': 'form-select'
-                        }
-                    }) }}
-
-                    {{ form_errors(registrationForm.role) }}
-
-                </div>
-
-                {# bouton inscription #}
-                <div class="d-grid">
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary"
-                    >
-                        <i class="fa-solid fa-user-plus me-2"></i>
-                        S'inscrire
-                    </button>
-
-                </div>
-
-            {{ form_end(registrationForm) }}
-
-            <hr class="my-4">
-
-            <p class="text-center mb-0">
-
-                Vous avez déjà un compte ?
-
-                <a
-                    href="{{ path('app_connexion') }}"
-                    class="text-decoration-none fw-semibold"
-                >
-                    <i class="fa-solid fa-right-to-bracket me-1"></i>
-                    Se connecter
-                </a>
-
-            </p>
+            <span>
+                Développez vos compétences
+            </span>
 
         </div>
 
     </div>
+
+
+    {# formulaire d'inscription #}
+    <div class="authentification-form">
+
+        <div class="authentification-form-header">
+
+            <h1>
+                Inscription
+            </h1>
+
+            <p>
+                Créez votre compte en quelques secondes.
+            </p>
+
+        </div>
+
+
+        {{ form_start(registrationForm) }}
+
+            {# nom d'utilisateur #}
+            <div class="mb-3">
+
+                <label
+                    for="{{ registrationForm.username.vars.id }}"
+                    class="form-label authentification-label"
+                >
+                    Nom d'utilisateur
+                </label>
+
+                <div class="authentification-input-wrapper">
+
+                    <i
+                        class="fa-solid fa-user authentification-input-icon"
+                    ></i>
+
+                    {{ form_widget(
+                        registrationForm.username,
+                        {
+                            'attr': {
+                                'class': 'form-control authentification-input',
+                                'placeholder': "Votre nom d'utilisateur",
+                                'autocomplete': 'username'
+                            }
+                        }
+                    ) }}
+
+                </div>
+
+                {{ form_errors(registrationForm.username) }}
+
+            </div>
+
+
+            {# email #}
+            <div class="mb-3">
+
+                <label
+                    for="{{ registrationForm.email.vars.id }}"
+                    class="form-label authentification-label"
+                >
+                    Adresse email
+                </label>
+
+                <div class="authentification-input-wrapper">
+
+                    <i
+                        class="fa-regular fa-envelope authentification-input-icon"
+                    ></i>
+
+                    {{ form_widget(
+                        registrationForm.email,
+                        {
+                            'attr': {
+                                'class': 'form-control authentification-input',
+                                'placeholder': 'exemple@email.com',
+                                'autocomplete': 'email'
+                            }
+                        }
+                    ) }}
+
+                </div>
+
+                {{ form_errors(registrationForm.email) }}
+
+            </div>
+
+
+            {# mot de passe #}
+            <div class="mb-3">
+
+                <label
+                    for="{{ registrationForm.password.vars.id }}"
+                    class="form-label authentification-label"
+                >
+                    Mot de passe
+                </label>
+
+                <div class="authentification-input-wrapper">
+
+                    <i
+                        class="fa-solid fa-lock authentification-input-icon"
+                    ></i>
+
+                    {{ form_widget(
+                        registrationForm.password,
+                        {
+                            'attr': {
+                                'class': 'form-control authentification-input',
+                                'placeholder': 'Votre mot de passe',
+                                'autocomplete': 'new-password'
+                            }
+                        }
+                    ) }}
+
+                </div>
+
+                {{ form_errors(registrationForm.password) }}
+
+            </div>
+
+
+            {# rôle #}
+            <div class="mb-4">
+
+                <label
+                    for="{{ registrationForm.role.vars.id }}"
+                    class="form-label authentification-label"
+                >
+                    Type de compte
+                </label>
+
+                <div class="authentification-input-wrapper">
+
+                    <i
+                        class="fa-solid fa-user-tag authentification-input-icon"
+                    ></i>
+
+                    {{ form_widget(
+                        registrationForm.role,
+                        {
+                            'attr': {
+                                'class': 'form-control authentification-input authentification-select'
+                            }
+                        }
+                    ) }}
+
+                </div>
+
+                {{ form_errors(registrationForm.role) }}
+
+            </div>
+
+
+            {# bouton #}
+            <div class="d-grid">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary authentification-button"
+                >
+
+                    <i class="fa-solid fa-user-plus me-2"></i>
+
+                    Créer mon compte
+
+                </button>
+
+            </div>
+
+        {{ form_end(registrationForm) }}
+
+
+        <div class="authentification-footer">
+
+            Vous avez déjà un compte ?
+
+            <a
+                href="{{ path('app_connexion') }}"
+                class="authentification-link"
+            >
+                <i class="fa-solid fa-right-to-bracket me-1"></i>
+                Se connecter
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
 
 </div>
 
