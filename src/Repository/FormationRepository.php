@@ -40,7 +40,7 @@ class FormationRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
-    public function getFormation($id):array
+    public function getFormation(?int $id):array
     {
         return $this->createQueryBuilder('f')
         ->innerJoin('f.module','m')

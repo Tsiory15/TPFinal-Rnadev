@@ -26,3 +26,30 @@
     margin: 0;
     color: var(--background);
 }
+.goToLoginPage *{
+ color: var(--background);
+
+}
+.goToLoginPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.login_button{
+    color: var(--foreground);
+    background-color:rgb(14, 14, 24);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.1s;
+}
+.login_button:hover{
+    background-color: rgb(58, 58, 88);
+    transition: 0.1s;
+}
+a:hover{
+    color: gray;
+}

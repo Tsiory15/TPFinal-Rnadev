@@ -33,9 +33,16 @@ class Module
     #[ORM\OneToMany(targetEntity: Formation::class, mappedBy: 'module', orphanRemoval: true)]
     private Collection $formation;
 
+    /**
+     * @var Collection<int, Categorie>
+     */
+    #[ORM\ManyToMany(targetEntity: Categorie::class, inversedBy: 'modules')]
+    private Collection $categorie;
+
     public function __construct()
     {
         $this->formation = new ArrayCollection();
+        $this->categorie = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -117,6 +124,30 @@ class Module
                 $formation->setModule(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Categorie>
+     */
+    public function getCategorie(): Collection
+    {
+        return $this->categorie;
+    }
+
+    public function addCategorie(Categorie $categorie): static
+    {
+        if (!$this->categorie->contains($categorie)) {
+            $this->categorie->add($categorie);
+        }
+
+        return $this;
+    }
+
+    public function removeCategorie(Categorie $categorie): static
+    {
+        $this->categorie->removeElement($categorie);
 
         return $this;
     }
