@@ -37,7 +37,7 @@ a{
     background-color: var(--foreground);
     padding: 1rem;
     display: flex;
-    gap: 1.2rem;
+    gap: 0.7rem;
     flex-direction: column;
     /* overflow-y: auto; */
     position: relative;
@@ -60,7 +60,6 @@ a{
 .formation_pagination{
     padding: 2rem;
     display: flex;
-    gap: 5rem;
     width: 100%;
     height: 200px;
     align-items: center;
@@ -70,9 +69,12 @@ select *,select{
     color: var(--background);
     border-radius: 5px;
 }
-.formation_pagination * ,.nbr_page,.formation_image_container * {
+.formation_pagination * ,.formation_image_container * {
     color: var(--background);
     font-size: 20px;
+}
+.formation_pagination > div {
+    width: 88px;
 }
 .formation_filter{
     display: flex;
@@ -86,9 +88,12 @@ select *,select{
     height: 50px;
 }
 .simple_container{
-    position: relative;
+    display: flex;
+    position: absolute;
     background-color: var(--foreground);
     padding: 1rem;
+    top: 0;
+    gap: 1rem;
 }
 .search{
     border: none;
@@ -99,12 +104,28 @@ select *,select{
     padding: 0.5rem;
 }
 .filter_list_container{
+    z-index: 15;
     position: absolute;
     left: 0;
     width: fit-content;
 }
 .filter_list{
+    display: flex;
+    flex-direction: column;
     width: 200px;
     padding: 0.5rem;
     outline: none;
+}
+.filter_list *{
+    color: var(--background);
+}
+.validate_btn{
+    padding:0 1rem;
+    border: none;
+    background-color: rgb(26, 26, 204);
+    border-radius: 5px;
+}
+.validate_btn:hover{
+    color: rgb(206, 206, 206);
+    background-color: rgb(18, 18, 128);
 }

@@ -18,25 +18,30 @@
 
     <nav class="menu_main_container">
 
-        <a href="{{ path('app_accueil') }}" class="nav-link">Acceuil</a>
+        <a href="{{ path('app_accueil') }}" class="text-decoration-none">Accueil</a>
 
-        <a href="{{ path('app_formation') }}" class="nav-link">Formation</a>
+        <a href="{{ path('app_formation') }}" class="text-decoration-none">Formation</a>
 
-        <a href="#" class="nav-link">Contact</a>
+        <a href="#" class="text-decoration-none">Contact</a>
 
         {% set username = app.session.get('_security.last_username','guest') %}
         {% if app.session.has('_security.last_username') %}
             <p class='username'>
                 {{username}}
-                <a href={{path('app_deconnexion')}} class='btn btn-secondary'>
+                <a href={{path('app_deconnexion')}} class='text-decoration-none login_button'>
                 Se déconnecter
                 </a>
             </p>
             
         {% else %}
-            <a href="{{ path('app_connexion') }}" class="btn btn-primary goToLoginPage">
+        <div class='goToLoginPage'>
+            <a href={{path('app_inscription')}} class='text-decoration-none register_button'>
+                S'inscrire
+            </a>
+            <a href="{{ path('app_connexion') }}" class="text-decoration-none login_button">
                     Se connecter
             </a>
+        </div>
         {% endif %}
 
     </nav>
