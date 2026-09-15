@@ -45,12 +45,9 @@
         {% endif %}
     </head>
     <body>
-        {% include "common/_menu.html.twig" %}
-        {% block body %}
-        {# {% block stylesheets %}
-            <link rel="stylesheet" href={{asset('bootstrap/css/bootstrap.min.css')}}>
-        {% endblock %} #}
-        {% endblock %}
-        {% include "common/_footer.html.twig" %}
+        {% block body %}{% endblock %}
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+        </script>
     </body>
 </html>

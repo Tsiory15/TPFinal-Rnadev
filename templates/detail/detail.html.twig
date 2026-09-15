@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}En savoir plus{% endblock %}
+
+{% block body %}
+{% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+{% endblock %}
+<div class="detail_main_container">
+    {% for item in formation %}
+        <div class="card_main_container">
+            <video src={{asset('assets/videos/' ~ item.videos)}} height='360' width='640' controls></video>
+            <h3>
+                {{item.titre}}
+            </h3>
+            <p>
+                {{item.description}}
+            </p>
+            <a href={{asset('assets/fichiers/' ~ item.fichiers)}}>
+                    {{item.fichiers}}
+            </a>
+        </div>
+</div>
+    {% endfor %}
+</div>
+{% endblock %}

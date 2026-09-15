@@ -1,0 +1,105 @@
+{% extends 'base.html copy.twig' %}
+
+{% block title %}Hello AjoutFormationController!{% endblock %}
+
+{% block body %}
+{% block stylesheets %}
+    <link rel="stylesheet" href={{asset('css/ajoutFormation.css')}}>
+{% endblock %}
+
+<div>
+    <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal1'>
+    Ajouter Formation
+    </button>
+    <div class="modal fade" id='exampleModal1' tabindex='-1' aria-labelleby='exampleModalLabel' aria-hidden='true'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">
+                        Ajout Formation
+                    </h1>
+                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                </div>
+                    <div class="modal-body">
+                    <form action={{path('add_formation')}} method='POST' class='form_container' enctype='multipart/form-data'>
+                        <div class="mb-3">
+                            <label for="title" class='form-label'>Titre</label>
+                            <input type="text" name="title" class='form-control' id='title'>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class='form-label'>Description</label>
+                            <input type="text" name="description" class='form-control' id='description'>
+                        </div>
+                        <div class="mb-3">
+                            <select name="module" id="">
+                                {% for item in dataModule %}
+                                    <option value={{item.id}}>
+                                        {{item.titre}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                            <div class="mb-3">
+                                <label for="formImage" class='form-label'>Ajouter une image</label>
+                                <input type="file" name="image" id='formImage' class='form-control' accept='image/png,image/jpg' required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formVideos" class='form-label'>Ajouter une videos</label>
+                                <input type="file" name="videos" id='formVideos' class='form-control' accept='videos/mp4,video/x-msvideo' required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFichier" class='form-label'>Ajouter une fichier</label>
+                                <input type="file" name="fichiers" id='formFichier' class='form-control' accept='application/pdf' required>
+                            </div>
+                            <input type="submit" class='btn btn-primary' value="Ajouter">
+                    </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal2'>
+    Ajouter Module
+    </button>
+    <div class="modal fade" id='exampleModal2' tabindex='-1' aria-labelleby='exampleModalLabel' aria-hidden='true'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">
+                        Ajouter une module
+                    </h1>
+                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                </div>
+                <div class="modal-body">
+                    <form action={{path('add_module')}} method="POST" enctype='multipart/form-data'>
+                        <div class="mb-3">
+                            <label for="title" class='form-label'>Titre</label>
+                            <input type="text" name="title" class='form-control' id='title'>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class='form-label'>Description</label>
+                            <input type="text" name="description" class='form-control' id='description'>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class='form-label'>Prix</label>
+                            <input type="number" name="price" class='form-control' id='price'>
+                        </div>
+                        <div class="mb-3">
+                            {% for item in dataCategorie %}
+                            <label>
+                                <input type="checkbox" name="tag[]" value={{item.id}}>
+                                {{item.nom}}
+                            </label>
+                            {% endfor %}
+                        </div>
+                        <div class="mb-3">
+                                <label for="formImage" class='form-label' accept='image/png,image/jpg' required>Ajouter une image</label>
+                                <input type="file" name="mon_image" id='formImage' class='form-control'>
+                        </div>
+                        <input type="submit" class='btn btn-primary' value="Ajouter">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

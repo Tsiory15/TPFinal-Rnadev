@@ -1,50 +1,68 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Section Formation{% endblock %}
-
 {% block body %}
 {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/formation.css') }}">
 {% endblock %}
-{% set i = 1 %}
 <div class="formation_main_container">
+    <form action={{path('app_formation')}} method="get">
     <div class="formation_filter">
-        Catégories
-        <ul class='filter_list'>
-            {% for item in 0..4 %}
-                <li>
-                    <a href="">Categ {{i}}</a>
-                </li>
-                {% set i = i + 1 %}
-            {% endfor %}
-        </ul>
+        <div class='simple_container filter_list_container'>
+        <div class='filter_list'>
+            <select class='categorie_container' name='categ'>
+                {% for item in listCateg %}
+                <option value={{item.id}} {{categ == item.id ? 'selected'}}>
+                    {{item.nom}}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        </div>
+        <div class='simple_container'>
+            <input type="search" name="search" id="" class="search" placeholder='Rechercher' value={{mot}}>
+            <input type="submit" value="Rechercher" class='validate_btn'>
+        </form>
+        </div>
     </div>
     <div class="formation_card_container">
-        {% for item in 0..5 %}
+        {% for item in listModule %}
             <div class='formation_card'>
                 <div class='formation_image_container'>
-                    <p>Image Container</p>
+                    <img src={{asset('assets/images/'~ item.images)}} alt='Module Images' height='100%' width:'100%'>
                 </div>
                 <div class='second_container'>
-                    <h1>
-                        Titre Module
-                    </h1>
-                    <p>Lorem ipsum dolor sit, amet consectetur</p>
-                    <a href="#" class='formation_button'>Voir les détails</a>
+                    <h5>
+                        {{item.titre}}
+                    </h5>
+                    {% if item.prix == '0' %}
+                    <div>
+                        Gratuit
+                    </div>
+                    {% else %}
+                    <div>
+                       prix : {{item.prix}} Ar
+                    </div>
+                    {% endif %}
+                    <a href={{path('app_detail',{id:item.id})}} class='formation_button'>Voir les détails</a>
                 </div>
             </div>
     {% endfor %}
     </div>
     <div class="formation_pagination">
-        <a href="">
-            Précedent
-        </a>
-        <p class='nbr_page'>
-            1/1
-        <p/>
-        <a href="">
-            Suivant
-        </a>
+        {% if CurrentPage > 1 %}
+            <a href={{path('app_formation',{page:CurrentPage - 1,search:app.request.query.get('search'),categ:app.request.query.get('categ')})}} class='text-decoration-none'>Précedent</a>
+        {% else %}
+            <div></div>
+        {% endif %}
+        <p>
+            {{CurrentPage}}/{{totalPage}}
+        </p>
+        {% if CurrentPage < totalPage %}
+            <a href={{path('app_formation',{page:CurrentPage + 1,search:app.request.query.get('search'),categ:app.request.query.get('categ')})}} class='text-decoration-none'>Suivant</a>
+        {% else %}
+            <div></div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
