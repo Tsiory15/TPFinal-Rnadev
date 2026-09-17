@@ -9,6 +9,7 @@ a{
     height: max-content;
     width: 100%;
     background-color: var(--secondary);
+    padding: 2rem;
 }
 .formation_card{
     height: 500px;
