@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>Dashboard Admin</title>
+
+    <link rel="stylesheet" href="{{ asset('css/admin_dashboard.css') }}">
+</head>
+
+<body>
+
+<div class="admin-dashboard">
+
+    <aside class="admin-menu">
+
+        <div class="admin-logo">
+            <h2>FORMATION</h2>
+            <p>Administration</p>
+        </div>
+
+        <nav class="admin-nav">
+
+            <a href="{{ path('app_accueil') }}">
+                Accueil
+            </a>
+
+            <a href="{{ path('app_ajout_formation') }}">
+                Formations
+            </a>
+
+            <a href="{{ path('app_deconnexion') }}">
+                Déconnexion
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <main class="admin-main">
+
+        <section class="admin-welcome">
+
+            <h1>Tableau de bord</h1>
+
+            <p>
+                Bienvenue dans votre espace administrateur.
+            </p>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

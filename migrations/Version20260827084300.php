@@ -26,12 +26,12 @@ final class Version20260827084300 extends AbstractMigration
         $this->addSql('ALTER TABLE formation ADD CONSTRAINT FK_404021BFAFC2B591 FOREIGN KEY (module_id) REFERENCES module (id)');
     }
 
-    public function down(Schema $schema): void
-    {
-        // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE formation DROP FOREIGN KEY FK_404021BFAFC2B591');
-        $this->addSql('DROP TABLE categorie');
-        $this->addSql('DROP TABLE formation');
-        $this->addSql('DROP TABLE module');
-    }
+    // public function down(Schema $schema): void
+    // {
+    //     // this down() migration is auto-generated, please modify it to your needs
+    //     $this->addSql('ALTER TABLE formation DROP FOREIGN KEY FK_404021BFAFC2B591');
+    //     $this->addSql('DROP TABLE categorie');
+    //     $this->addSql('DROP TABLE formation');
+    //     $this->addSql('DROP TABLE module');
+    // }
 }
