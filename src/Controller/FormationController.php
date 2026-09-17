@@ -46,12 +46,16 @@ final class FormationController extends AbstractController
             'categName' => $CategByid
         ]);
     }
-    #[Route('/detail/{id}', name: 'app_detail')]
-    public function detail(int $id): Response
+    #[Route('/detail/{id}', name: 'app_detail',methods:['POST','GET'])]
+    public function detail(int $id,Request $request): Response
     {
+        $idFormation = $request->query->get('formation',14);
         $data = $this->formationRepository->getFormation($id);
+        $formationId = $this->formationRepository->find($idFormation);
         return $this->render('detail/detail.html.twig', [
             'formation' => $data,
+            'singleFormation' => $formationId,
+            'id' => $id
         ]);
     }
 }

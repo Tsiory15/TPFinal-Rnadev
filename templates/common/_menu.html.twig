@@ -28,17 +28,17 @@
         {% if app.session.has('_security.last_username') %}
             <p class='username'>
                 {{username}}
-                <a href={{path('app_deconnexion')}} class='text-decoration-none login_button'>
+                <a href='#' class='text-decoration-none login_button'>
                 Se déconnecter
                 </a>
             </p>
             
         {% else %}
         <div class='goToLoginPage'>
-            <a href={{path('app_inscription')}} class='text-decoration-none register_button'>
+            <a href='#' class='text-decoration-none register_button'>
                 S'inscrire
             </a>
-            <a href="{{ path('app_connexion') }}" class="text-decoration-none login_button">
+            <a href='#' class="text-decoration-none login_button">
                     Se connecter
             </a>
         </div>

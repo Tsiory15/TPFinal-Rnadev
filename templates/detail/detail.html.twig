@@ -7,20 +7,27 @@
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
 {% endblock %}
 <div class="detail_main_container">
-    {% for item in formation %}
-        <div class="card_main_container">
-            <video src={{asset('assets/videos/' ~ item.videos)}} height='360' width='640' controls></video>
-            <h3>
+    <div class="card_main_container">
+            <video src={{asset('assets/videos/' ~ singleFormation.videos)}} class='videos' height='530' width='100%' controls></video>
+            <div class="info_container">
+                <h3>
+                    {{singleFormation.titre}}
+                </h3>
+                <p>
+                    {{singleFormation.description}}
+                </p>
+                <a href={{asset('assets/fichiers/' ~ singleFormation.fichiers)}} download='fichier'>
+                        {{singleFormation.fichiers}}
+                </a>
+            </div>
+    </div>
+    <div class="formation_list">
+        {% for item in formation %}
+           <a href={{path('app_detail',{id:id,formation:item.id})}} class='text-decoration-none formation_link'>
                 {{item.titre}}
-            </h3>
-            <p>
-                {{item.description}}
-            </p>
-            <a href={{asset('assets/fichiers/' ~ item.fichiers)}}>
-                    {{item.fichiers}}
-            </a>
-        </div>
+           </a>
+        {% endfor %}
+    </div>
 </div>
-    {% endfor %}
 </div>
 {% endblock %}
