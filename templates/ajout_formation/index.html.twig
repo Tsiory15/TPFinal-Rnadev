@@ -6,12 +6,12 @@
 {% block stylesheets %}
     <link rel="stylesheet" href={{asset('css/ajoutFormation.css')}}>
 {% endblock %}
-
+    <script src={{asset('js/script.js')}} defer></script>
 <div>
-    <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal1'>
-    Ajouter Formation
+    <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal2'>
+    Ajouter Module
     </button>
-    <div class="modal fade" id='exampleModal1' tabindex='-1' aria-labelleby='exampleModalLabel' aria-hidden='true'>
+    <div class="modal fade" id='exampleModal1' tabindex='-1' aria-labelleby='exampleModalLabel'>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -28,7 +28,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="description" class='form-label'>Description</label>
-                            <input type="text" name="description" class='form-control' id='description'>
+                            <textarea name="description" class='form-control' id='description'></textarea>
                         </div>
                         <div class="mb-3">
                             <select name="module" id="">
@@ -57,10 +57,7 @@
             </div>
         </div>
     </div>
-    <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal2'>
-    Ajouter Module
-    </button>
-    <div class="modal fade" id='exampleModal2' tabindex='-1' aria-labelleby='exampleModalLabel' aria-hidden='true'>
+    <div class="modal fade" id='exampleModal2' tabindex='-1' aria-labelleby='exampleModalLabel'>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -71,35 +68,96 @@
                 </div>
                 <div class="modal-body">
                     <form action={{path('add_module')}} method="POST" enctype='multipart/form-data'>
+                    <input type="hidden" name="method" value="none" class="hide">
+                    <input type="hidden" name="id" class="id">
                         <div class="mb-3">
-                            <label for="title" class='form-label'>Titre</label>
-                            <input type="text" name="title" class='form-control' id='title'>
+                            <label for="title2" class='form-label'>Titre</label>
+                            <input type="text" name="title" class='form-control' id='title2'>
                         </div>
                         <div class="mb-3">
-                            <label for="description" class='form-label'>Description</label>
-                            <input type="text" name="description" class='form-control' id='description'>
+                            <label for="description2" class='form-label'>Description</label>
+                            <input type="text" name="description" class='form-control' id='description2'>
                         </div>
                         <div class="mb-3">
-                            <label for="price" class='form-label'>Prix</label>
-                            <input type="number" name="price" class='form-control' id='price'>
+                            <label for="price2" class='form-label'>Prix</label>
+                            <input type="number" name="price" class='form-control' id='price2'>
                         </div>
                         <div class="mb-3">
                             {% for item in dataCategorie %}
                             <label>
-                                <input type="checkbox" name="tag[]" value={{item.id}}>
+                                <input type="checkbox" name="tag[]" value={{item.id}} class='check'>
                                 {{item.nom}}
                             </label>
                             {% endfor %}
                         </div>
                         <div class="mb-3">
-                                <label for="formImage" class='form-label' accept='image/png,image/jpg' required>Ajouter une image</label>
-                                <input type="file" name="mon_image" id='formImage' class='form-control'>
+                                <label for="formImage2" class='form-label' accept='image/png,image/jpg' required>Ajouter une image</label>
+                                <input type="file" name="mon_image" id='formImage2' class='form-control'>
                         </div>
-                        <input type="submit" class='btn btn-primary' value="Ajouter">
+                        <input type="submit" class='btn btn-primary button' value="Ajouter">
                     </form>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="table_container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for item in dataModule %}
+                        <tr scope='row'>
+                            <td>{{ item.titre }}</td>
+                            <td>{{ item.description }}</td>
+                            <td>{{ item.prix }} Ar</td>
+                            <td>
+                                <button type='button' class='btn btn-primary change' 
+                                data-bs-toggle='modal' 
+                                data-bs-target='#exampleModal2' 
+                                data-bs-titre = "{{ item.titre }}"
+                                data-bs-description = "{{ item.description }}"
+                                data-bs-prix = "{{ item.prix }}"
+                                data-bs-categ="{{item.categorie | map(c => c.id) | json_encode}}"
+                                data-bs-method="post"
+                                data-bs-image="{{asset('assets/images/' ~ item.images)}}"
+                                data-bs-name={{ item.images }}
+                                data-bs-id={{ item.id }}
+                                >
+                                    Modifier
+                                </button>
+                            </td>
+                        </tr>
+                        
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal1'>
+    Ajouter Formation
+    </button>
+    <div class="table_container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for item in dataFormation%}
+                        <tr scope='row'>
+                            <td>{{item.titre}}</td>
+                            <td>{{item.description}}</td>
+                        </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 {% endblock %}

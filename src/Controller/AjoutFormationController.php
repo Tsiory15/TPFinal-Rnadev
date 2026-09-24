@@ -42,7 +42,7 @@ final class AjoutFormationController extends AbstractController
             'dataCategorie' => $dataCategorie
         ]);
     }
-    #[Route('/addFormation',name:'add_formation',methods:['POST'])]
+    #[Route('/addFormation',name:'add_formation',methods:['POST','PUT'])]
     public function addFormation(Request $request):Response
     {
         $titre = $request->request->get('title');
@@ -98,37 +98,44 @@ final class AjoutFormationController extends AbstractController
     #[Route('/addModule',name:'add_module',methods:['POST'])]
     public function addModule(Request $request):Response
     {
+        $method = $request->request->get("method");
+        $id = $request->request->get("id",'0'); 
         $tag = $request->request->all('tag');
         $titre = $request->request->get('title');
         $description = $request->request->get('description');
         $price = $request->request->getString('price','0');
         $image = $request->files->get('mon_image');
-        $imageName = pathinfo($image->getClientOriginalName(),PATHINFO_FILENAME);
-        $imageExtension = $image->guessExtension();
-        $safeName = $this->slugger->slug($imageName);
-        $newName = $safeName.'-'.uniqid().'.'.$imageExtension;
-
         $module = new Module;
-        $module->setTitre($titre);
-        $module->setDescription($description);
-        $module->setPrix($price);
-        $module->setImages($newName);
-        foreach ($tag as $value) {
-            $module->addCategorie($this->categorieRepository->find($value));
+        if($method == 'post'){
+            $module = $this->entityManager->getRepository(Module::class)->find($id);
+            }
+            $module->setTitre($titre);
+            $module->setDescription($description);
+            $module->setPrix($price);
+            $module->getCategorie()->clear();
+            
+            foreach ($tag as $value) {
+                $module->addCategorie($this->categorieRepository->find($value));
+            }
+            
+            if($method != "post"){
+                $imageName = pathinfo($image->getClientOriginalName(),PATHINFO_FILENAME);
+                $imageExtension = $image->guessExtension();
+                $safeName = $this->slugger->slug($imageName);
+                $newName = $safeName.'-'.uniqid().'.'.$imageExtension;
+                $module->setImages($newName);
+                $this->entityManager->persist($module);
+            try {
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $newName
+                );
+            } catch (\Throwable $th) {
+                throw $th;
+            }
         }
-        
-
-        $this->entityManager->persist($module);
         $this->entityManager->flush();
 
-        try {
-            $image->move(
-                $this->getParameter('images_directory'),
-                $newName
-            );
-        } catch (\Throwable $th) {
-            throw $th;
-        }
 
         return $this->redirectToRoute('app_ajout_formation'); 
     }

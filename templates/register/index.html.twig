@@ -1,0 +1,38 @@
+{% extends 'base.html copy.twig' %}
+
+{% block title %}Hello RegisterController!{% endblock %}
+
+{% block body %}
+{% block stylesheets %}
+    <link rel="stylesheet" href={{asset('css/register.css')}}>
+{% endblock %}
+<div class="form_container">
+    <form action={{path('app_register')}} method="post" class="form_register">
+        <div class="first_container">
+
+        </div>
+        <div>
+            <h3>
+                Créer un compte
+            </h3>
+            <label for="username">
+                Username
+            <input type="text" name="username" id="username" class="form-control">
+            </label>
+            <label for="mail">
+                Email
+            <input type="email" name="mail" id="mail" class="form-control">
+            </label>
+            <label for="pass">
+                Password
+            <input type="password" name="pass" id="pass" class="form-control">
+            </label>
+            <label for="role">
+                Role
+                <input type="checkbox" name="role" id="role">
+            </label>
+            <input type="submit" value="Register" class="submit_button">
+        </div>
+    </form>
+</div>
+{% endblock %}

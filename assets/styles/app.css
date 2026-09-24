@@ -9,7 +9,7 @@
 :root {
   --background: #181717;
   --foreground: #ffffff;
-  --secondary:#dbdbdb;
+  --secondary: rgb(14, 14, 24);
 }
 img{
   object-fit: cover;

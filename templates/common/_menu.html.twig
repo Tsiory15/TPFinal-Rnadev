@@ -24,21 +24,20 @@
 
         <a href="#" class="text-decoration-none">Contact</a>
 
-        {% set username = app.session.get('_security.last_username','guest') %}
-        {% if app.session.has('_security.last_username') %}
+        {% if app.user%}
             <p class='username'>
-                {{username}}
-                <a href='#' class='text-decoration-none login_button'>
+                {{app.user.userIdentifier}}
+                <a href={{path('app_logout')}} class='text-decoration-none login_button'>
                 Se déconnecter
                 </a>
             </p>
             
         {% else %}
         <div class='goToLoginPage'>
-            <a href='#' class='text-decoration-none register_button'>
+            <a href={{path('app_registration')}} class='text-decoration-none register_button'>
                 S'inscrire
             </a>
-            <a href='#' class="text-decoration-none login_button">
+            <a href={{path('app_login')}} class="text-decoration-none login_button">
                     Se connecter
             </a>
         </div>

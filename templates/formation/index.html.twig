@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="{{ asset('css/formation.css') }}">
 {% endblock %}
 <div class="formation_main_container">
-    <form action={{path('app_formation')}} method="get">
+    <form action={{path('app_formation')}} method="get" class="formation_filter_container">
     <div class="formation_filter">
         <div class='simple_container filter_list_container'>
         <div class='filter_list'>
@@ -21,7 +21,9 @@
         </div>
         <div class='simple_container'>
             <input type="search" name="search" id="" class="search" placeholder='Rechercher' value={{mot}}>
-            <input type="submit" value="Rechercher" class='validate_btn'>
+            <button type="submit" class="bouton">
+                {{ ux_icon('lucide:search', { class: 'icone' }) }}
+            </button>
         </form>
         </div>
     </div>
