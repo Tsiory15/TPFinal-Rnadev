@@ -1,7 +1,170 @@
-.modal *{
+.modal * {
     color: var(--background);
 }
-.form_container{
+
+.form_container {
     display: flex;
     flex-direction: column;
+}
+
+
+/* 
+   CONTENEUR PRINCIPAL
+   */
+
+.ajout-container {
+    padding: 30px;
+}
+
+
+/* 
+   LISTES
+    */
+
+.liste-section {
+    margin-top: 50px;
+}
+
+.liste-section h2 {
+    margin-bottom: 20px;
+}
+
+
+/* 
+   TABLEAU
+    */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.formation-table,
+.module-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    color: var(--background);
+}
+
+
+/* En-tête */
+
+.formation-table th,
+.module-table th {
+    background-color: var(--background);
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+
+
+/* Cellules */
+
+.formation-table td,
+.module-table td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    color: var(--background);
+}
+
+
+/* Une ligne sur deux */
+
+.formation-table tbody tr:nth-child(even),
+.module-table tbody tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+
+/*
+   BOUTON MODIFIER
+    */
+
+.btn-modifier {
+    border: none;
+    background-color: #0d6efd;
+    color: white;
+
+    padding: 7px 12px;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+
+/*
+   BOUTON SUPPRIMER
+    */
+
+.btn-supprimer {
+    border: none;
+    background-color: #dc3545;
+    color: white;
+
+    padding: 7px 12px;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+
+/* 
+   CATEGORIE
+    */
+
+.categorie {
+    display: inline-block;
+
+    background-color: #0d6efd;
+    color: white;
+
+    padding: 4px 8px;
+    margin: 2px;
+
+    border-radius: 4px;
+
+    font-size: 13px;
+}
+
+
+/* 
+   MESSAGE VIDE
+    */
+
+.message-vide {
+    padding: 20px;
+
+    background-color: white;
+    color: var(--background);
+
+    border-radius: 5px;
+}
+
+
+/* 
+   HOVER
+   */
+
+.formation-table tbody tr:hover,
+.module-table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+
+/* 
+   ANDRANA RESPONSIVE
+  */
+
+@media (max-width: 768px) {
+
+    .ajout-container {
+        padding: 15px;
+    }
+
+    .formation-table,
+    .module-table {
+        min-width: 800px;
+    }
+
 }
