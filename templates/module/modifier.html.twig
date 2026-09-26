@@ -1,0 +1,95 @@
+{# {% extends 'base.html copy.twig' %} #}
+
+{% block title %}Modifier un module{% endblock %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ asset('css/modifier_module.css') }}">
+
+<div class="modifier-container">
+
+    <button type="button"
+            class="btn-retour"
+            onclick="window.history.back()">
+        ← Retour
+    </button>
+
+    <h1>Modifier le module</h1>
+
+    <form method="POST" class="modifier-form">
+
+        <div class="form-group">
+
+            <label for="module-title">
+                Titre
+            </label>
+
+            <input type="text"
+                   id="module-title"
+                   name="title"
+                   value="{{ module.titre }}">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="module-description">
+                Description
+            </label>
+
+            <input type="text"
+                   id="module-description"
+                   name="description"
+                   value="{{ module.description }}">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="module-price">
+                Prix
+            </label>
+
+            <input type="number"
+                   id="module-price"
+                   name="price"
+                   value="{{ module.prix }}">
+
+        </div>
+
+
+        <div class="categories-group">
+
+            <p>Catégories</p>
+
+            {% for categorie in dataCategorie %}
+
+                <label class="category-item">
+
+                    <input type="checkbox"
+                        name="tag[]"
+                        value="{{ categorie.id }}"
+                        {% if module.categorie.contains(categorie) %}
+                            checked
+                        {% endif %}>
+
+                        {{ categorie.nom }}
+
+                </label>
+
+            {% endfor %}
+
+        </div>
+
+
+        <button type="submit" class="btn-enregistrer">
+            Enregistrer
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

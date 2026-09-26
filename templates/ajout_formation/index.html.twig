@@ -596,10 +596,15 @@
 
                                 <td>
 
-                                    <button type="button"
-                                            class="btn-modifier">
-                                        Modifier
-                                    </button>
+                                    <form action="{{ path('modifier_module_page', {'id': module.id}) }}"
+                                        method="GET"
+                                        style="display: inline;">
+
+                                        <button type="submit" class="btn-modifier">
+                                            Modifier
+                                        </button>
+
+                                    </form>
 
                                     <button type="button"
                                             class="btn-supprimer">

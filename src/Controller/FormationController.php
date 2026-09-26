@@ -118,4 +118,59 @@ final class FormationController extends AbstractController
 
         return $this->redirectToRoute('app_ajout_formation');
     }
+
+
+        #[Route('/module/{id}/modifier', name: 'modifier_module_page', methods: ['GET'])]
+    public function modifierModulePage(int $id): Response
+    {
+        $module = $this->moduleRepository->find($id);
+
+        if (!$module) {
+            throw $this->createNotFoundException('Module introuvable.');
+        }
+
+        $dataCategorie = $this->categorieRepository->findAll();
+
+        return $this->render('module/modifier.html.twig', [
+            'module' => $module,
+            'dataCategorie' => $dataCategorie,
+        ]);
+    }
+
+
+        #[Route('/module/{id}/modifier', name: 'modifier_module', methods: ['POST'])]
+    public function modifierModule(int $id, Request $request): Response
+    {
+        $module = $this->moduleRepository->find($id);
+
+        if (!$module) {
+            throw $this->createNotFoundException('Module introuvable.');
+        }
+
+        $titre = $request->request->get('title');
+        $description = $request->request->get('description');
+        $prix = $request->request->getInt('price');
+
+        $tag = $request->request->all('tag');
+
+        $module->setTitre($titre);
+        $module->setDescription($description);
+        $module->setPrix($prix);
+
+        foreach ($module->getCategorie() as $categorie) {
+            $module->removeCategorie($categorie);
+        }
+
+        foreach ($tag as $categorieId) {
+            $categorie = $this->categorieRepository->find($categorieId);
+
+                if ($categorie) {
+                $module->addCategorie($categorie);
+             }
+        }
+
+        $this->entityManager->flush();
+
+        return $this->redirectToRoute('app_ajout_formation');
+    }
 }
