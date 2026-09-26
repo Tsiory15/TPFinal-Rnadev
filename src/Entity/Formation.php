@@ -37,6 +37,18 @@ class Formation
         return $this->id;
     }
 
+    // public function getDeletedAt(): ?\DateTimeImmutable
+    // {
+    //     return $this->deletedAt;
+    // }
+
+    // public function setDeletedAt(?\DateTimeImmutable $deletedAt): static
+    // {
+    //     $this->deletedAt = $deletedAt;
+
+    //     return $this;
+    // }
+
     public function getTitre(): ?string
     {
         return $this->titre;

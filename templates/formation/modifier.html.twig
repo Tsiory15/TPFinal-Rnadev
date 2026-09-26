@@ -1,0 +1,76 @@
+{% block body %}
+
+    <link rel="stylesheet" href="{{ asset('css/modifier_formation.css') }}">
+
+    <div class="modifier-container">
+
+        <button type="button"
+                class="btn-retour"
+                onclick="window.history.back()">
+            ← Retour
+        </button>
+
+        <h1>Modifier la formation</h1>
+
+        <form action="{{ path('modifier_formation', {'id': formation.id}) }}"
+              method="POST"
+              class="modifier-form">
+
+            <div class="form-group">
+
+                <label for="title">
+                    Titre
+                </label>
+
+                <input type="text"
+                       name="title"
+                       id="title"
+                       value="{{ formation.titre }}">
+            </div>
+
+            <div class="form-group">
+
+                <label for="description">
+                    Description
+                </label>
+
+                <input type="text"
+                       name="description"
+                       id="description"
+                       value="{{ formation.description }}">
+            </div>
+
+            <div class="form-group">
+
+                <label for="module">
+                    Module
+                </label>
+
+                <select name="module" id="module">
+
+                    {% for module in dataModule %}
+
+                        <option value="{{ module.id }}"
+                            {% if formation.module and formation.module.id == module.id %}
+                                selected
+                            {% endif %}>
+
+                            {{ module.titre }}
+
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <button type="submit" class="btn-enregistrer">
+                Enregistrer
+            </button>
+
+        </form>
+
+    </div>
+
+{% endblock %}

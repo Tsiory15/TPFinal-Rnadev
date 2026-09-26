@@ -1,4 +1,4 @@
-{% extends 'base.html copy.twig' %}
+{# {% extends 'base.html copy.twig' %}
 
 {% block title %}Hello AjoutFormationController!{% endblock %}
 
@@ -102,4 +102,531 @@
         </div>
     </div>
 </div>
+{% endblock %} #}
+
+{% extends 'base.html copy.twig' %}
+
+{% block title %}Gestion des formations{% endblock %}
+
+{% block body %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/ajoutFormation.css') }}">
+{% endblock %}
+
+
+<div class="ajout-container">
+
+    {# ================================
+       AJOUT FORMATION
+       ================================ #}
+
+    <button type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal1">
+        Ajouter Formation
+    </button>
+
+
+    <div class="modal fade"
+         id="exampleModal1"
+         tabindex="-1"
+         aria-hidden="true">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h1 class="modal-title fs-5">
+                        Ajout Formation
+                    </h1>
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close">
+                    </button>
+
+                </div>
+
+
+                <div class="modal-body">
+
+                    <form action="{{ path('add_formation') }}"
+                          method="POST"
+                          class="form_container"
+                          enctype="multipart/form-data">
+
+                        <div class="mb-3">
+
+                            <label for="title"
+                                   class="form-label">
+                                Titre
+                            </label>
+
+                            <input type="text"
+                                   name="title"
+                                   class="form-control"
+                                   id="title">
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label for="description"
+                                   class="form-label">
+                                Description
+                            </label>
+
+                            <input type="text"
+                                   name="description"
+                                   class="form-control"
+                                   id="description">
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label for="module"
+                                   class="form-label">
+                                Module
+                            </label>
+
+                            <select name="module"
+                                    id="module"
+                                    class="form-select">
+
+                                {% for item in dataModule %}
+
+                                    <option value="{{ item.id }}">
+                                        {{ item.titre }}
+                                    </option>
+
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label for="formImage"
+                                   class="form-label">
+                                Ajouter une image
+                            </label>
+
+                            <input type="file"
+                                   name="image"
+                                   id="formImage"
+                                   class="form-control"
+                                   accept="image/png,image/jpeg"
+                                   required>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label for="formVideos"
+                                   class="form-label">
+                                Ajouter une vidéo
+                            </label>
+
+                            <input type="file"
+                                   name="videos"
+                                   id="formVideos"
+                                   class="form-control"
+                                   accept="video/mp4,video/x-msvideo"
+                                   required>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label for="formFichier"
+                                   class="form-label">
+                                Ajouter un fichier
+                            </label>
+
+                            <input type="file"
+                                   name="fichiers"
+                                   id="formFichier"
+                                   class="form-control"
+                                   accept="application/pdf"
+                                   required>
+
+                        </div>
+
+
+                        <input type="submit"
+                               class="btn btn-primary"
+                               value="Ajouter">
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    {# ================================
+       AJOUT MODULE
+       ================================ #}
+
+    <button type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal2">
+
+        Ajouter Module
+
+    </button>
+
+
+    <div class="modal fade"
+         id="exampleModal2"
+         tabindex="-1"
+         aria-hidden="true">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h1 class="modal-title fs-5">
+                        Ajouter un module
+                    </h1>
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close">
+                    </button>
+
+                </div>
+
+
+                <div class="modal-body">
+
+                    <form action="{{ path('add_module') }}"
+                          method="POST"
+                          enctype="multipart/form-data">
+
+                        <div class="mb-3">
+
+                            <label for="module-title"
+                                   class="form-label">
+                                Titre
+                            </label>
+
+                            <input type="text"
+                                   name="title"
+                                   class="form-control"
+                                   id="module-title">
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label for="module-description"
+                                   class="form-label">
+                                Description
+                            </label>
+
+                            <input type="text"
+                                   name="description"
+                                   class="form-control"
+                                   id="module-description">
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label for="price"
+                                   class="form-label">
+                                Prix
+                            </label>
+
+                            <input type="number"
+                                   name="price"
+                                   class="form-control"
+                                   id="price">
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            {% for item in dataCategorie %}
+
+                                <label class="category-item">
+
+                                    <input type="checkbox"
+                                           name="tag[]"
+                                           value="{{ item.id }}">
+
+                                    {{ item.nom }}
+
+                                </label>
+
+                            {% endfor %}
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label for="module-image"
+                                   class="form-label">
+                                Ajouter une image
+                            </label>
+
+                            <input type="file"
+                                   name="mon_image"
+                                   id="module-image"
+                                   class="form-control"
+                                   accept="image/png,image/jpeg">
+
+                        </div>
+
+
+                        <input type="submit"
+                               class="btn btn-primary"
+                               value="Ajouter">
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    {# ==================================================
+       LISTE FORMATIONS
+       ================================================== #}
+
+    <section class="liste-section">
+
+        <h2>Liste des formations</h2>
+
+
+        {% if dataFormation is empty %}
+
+            <p class="message-vide">
+                Aucune formation enregistrée.
+            </p>
+
+        {% else %}
+
+            <div class="table-container">
+
+                <table class="formation-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Titre</th>
+                            <th>Description</th>
+                            <th>Module</th>
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for formation in dataFormation %}
+
+                            <tr>
+
+                                <td>
+                                    {{ formation.id }}
+                                </td>
+
+                                <td>
+                                    {{ formation.titre }}
+                                </td>
+
+                                <td>
+                                    {{ formation.description }}
+                                </td>
+
+                                <td>
+
+                                    {% if formation.module %}
+                                        {{ formation.module.titre }}
+                                    {% else %}
+                                        Aucun module
+                                    {% endif %}
+
+                                </td>
+
+                                <td>
+
+                                    <form action="{{ path('modifier_formation_page', {'id': formation.id}) }}"
+                                        method="GET"
+                                        style="display: inline;">
+
+                                        <button type="submit" class="btn-modifier">
+                                            Modifier
+                                        </button>
+
+                                    </form>
+
+                                    <form action="{{ path('supprimer_formation', {'id': formation.id}) }}"
+                                        method="POST"
+                                        style="display: inline;"
+                                        onsubmit="return confirm('Voulez-vous vraiment supprimer cette formation ?');">
+
+                                        <button type="submit" class="btn-supprimer">
+                                            Supprimer
+                                        </button>
+
+                                    </form>
+
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+
+    {# ==================================================
+       LISTE MODULES
+       ================================================== #}
+
+    <section class="liste-section">
+
+        <h2>Liste des modules</h2>
+
+
+        {% if dataModule is empty %}
+
+            <p class="message-vide">
+                Aucun module enregistré.
+            </p>
+
+        {% else %}
+
+            <div class="table-container">
+
+                <table class="module-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Titre</th>
+                            <th>Description</th>
+                            <th>Prix</th>
+                            <th>Catégories</th>
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for module in dataModule %}
+
+                            <tr>
+
+                                <td>
+                                    {{ module.id }}
+                                </td>
+
+                                <td>
+                                    {{ module.titre }}
+                                </td>
+
+                                <td>
+                                    {{ module.description }}
+                                </td>
+
+                                <td>
+                                    {{ module.prix }}
+                                </td>
+
+                                <td>
+
+                                    {% for categorie in module.categorie %}
+
+                                        <span class="categorie">
+                                            {{ categorie.nom }}
+                                        </span>
+
+                                    {% else %}
+
+                                        Aucune
+
+                                    {% endfor %}
+
+                                </td>
+
+                                <td>
+
+                                    <form action="{{ path('modifier_module_page', {'id': module.id}) }}"
+                                        method="GET"
+                                        style="display: inline;">
+
+                                        <button type="submit" class="btn-modifier">
+                                            Modifier
+                                        </button>
+
+                                    </form>
+
+                                    <button type="button"
+                                            class="btn-supprimer">
+                                        Supprimer
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+</div>
+
 {% endblock %}
